@@ -10,10 +10,15 @@ function App() {
     { id: 3, text: "Shopping", day: "Feb 9th at 3:40pm", reminder: false },
   ]);
 
+  //Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
     <div className="App container">
       <Header />
-      <Tasks tasks={tasks}/>
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : "No Task To Show!"}
     </div>
   );
 }
